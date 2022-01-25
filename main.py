@@ -1,29 +1,59 @@
 # Text based Adventure Game
 # Space Adventure Game choose the right answers in order to progress
 
-Stats = {"Health": 10,"Shield": 0 }
+#PLayer info
+PlayerStats = {"Health": 10,"Shield": 0 }
 
+
+#Ship information stored in dictionary
+ShipStats = {"Ship_Shields": 100, "Ship_Integrity": 100, "Ship_Power": 100, "Ship_Weapons": 100}
+
+#Inventory
 Inventory = []
+
+
+Ship_Interior = {"Ship_Door": 2}
+
+
+
 import time
 
+# Game over command which will exit game
 def game_over():
     print()
     print("Maybe next time!!")
     print()
     print("##############")
-    print("#  You lost  #")
+    print("#     END    #")
     print("##############")
-    exit()
+    StartAgain = input("Do You want to start again...Y/N:  ")
+    if StartAgain == "Y" or StartAgain == "y":
+        startGame()
+    elif StartAgain == "N" or StartAgain == "n":
+        exit()
+# Using else function as a form of error handling
+    else:
+        print("Not Valid Input...")
+        game_over()
 
-if Stats["Health"] <= 0:
-    game_over
+
+
+#if input == PlayerStats:
+    #print(PlayerStats)
+
+#if input == ShipStats:
+    #print(ShipStats)
+
+#if input == Inventory:
+    #print(Inventory)
+
 
 
 # Defining intro to the script extra prints are for added space
 def intro():
     print()
     time.sleep(3)
-    print(Stats)
+    print(PlayerStats)
     print()
     print()
     print("You press the button... You hear the sound of something powering on ")
@@ -40,12 +70,14 @@ def intro():
     print("Option #3: Sleep ")
     print()
     # User choices for the first level
+
     firtsPath = input("What do you choose? (1/2/3):  ")
     if firtsPath == "1"   :
         print("You randomly press buttons on the ship ")
         print()
         print()
         print("Nothing Happens")
+        intro()
 
     elif firtsPath == "2" :
         print("You begin to look around the ship to find anything that can help you, \nas you walk around you notice a"
@@ -66,18 +98,14 @@ def intro():
         print()
         print()
         print("You go back to sleep")
+        intro()
+
+    else:
+        print("Please pick from 1/2/3")
+        intro()
 
 
 
-
-def Option1():
-    print()
-
-def Option1_1():
-    print()
-
-def Option1_2():
-    print()
 
 def Option2():
     print("You proceed to keep walking through the hallway sof the ship. ")
@@ -99,8 +127,9 @@ def Option2():
         print()
         print()
         print("You do not have a keyCard")
-        print("Go back and find the Keycard")
+        print("Go back and find the KeyCard")
         Option2_2()
+
 
 
 
@@ -115,12 +144,15 @@ def Option2_1():
     thirdChoice = input("Do you want press the button: ")
     if thirdChoice == "y" or thirdChoice == "Y":
         print("You pressed the button")
+        Option3()
 
     elif thirdChoice == "N" or thirdChoice == "n":
         print("You left the button")
         Option2_1()
 
-
+    else:
+        print("Please Enter Valid input....")
+        Option2_1()
 
 
 def Option2_2():
@@ -128,8 +160,8 @@ def Option2_2():
     print()
     print("You go back to find the KeyCard but on your way back their is a big rumble and vibration")
     print("You are shaken to the floor and fall and hit your head")
-    Stats["Health"] -= 3
-    print(Stats)
+    PlayerStats["Health"] -= 3
+    print(PlayerStats)
     print()
     print()
     print("You get up on you feet as things thrash around you ")
@@ -138,25 +170,51 @@ def Option2_2():
     print()
     print("Confused as to what to do you come across an ultimatum")
     forthChoice = input("1) Do you go towards the cockpit to find out what happening even though there is no power"
-                        "\n\nor 2)Do you try find a a way through doors without the KeyCard... 1/2 ")
+                        "\n\nor\n\n2)Do you try find a a way through doors without the KeyCard... 1/2 ")
     if forthChoice == "1":
         print("You attempt to make you way towards the cockpit ")
         Option3_1()
     elif forthChoice == "2":
         print("You attempt to make you're way towards the door")
         Option3_2()
+    else:
+        print("Please enter valid input...")
+        Option2_2()
 
 
 
 
 
-
+#Key card option
 def Option3():
     print()
+    print()
+    print("Once you press button the vail of darkness which surrounded the whole ship disappeared ")
+    print("You turned the power on...")
+    print("All of the sudden you hear a bang and feel a big rumble... ")
+    print()
+    ShipStats["Ship_Shields"] -= 10
+    print(ShipStats)
+    print()
+    print("You were hit....")
+    print("As the power on you can see through the window a large explosion in front of yellowish vail ")
+    print("You're shields protected you from the damage")
+    lastChoice = input("Press any key to run towards cockpit")
+    if lastChoice == "y" or lastChoice == "Y":
+        print("You made you're way to the cockpit")
+        Option4()
+
 
 def Option3_1():
     print()
+    print()
+    print("As yu make your way to cockpit you attempt to press any buttons...")
+    print("But nothing seems to work...")
+    print("Your ship keeps getting shot at you being unable to do anything causes you to be in a panic")
+    print("As your unable to do nothing you and your ship are destroyed by the enemy vessel...")
+    PlayerStats["Health"] -= 10
 
+#No keycard option
 def Option3_2():
     print()
     print()
@@ -167,8 +225,63 @@ def Option3_2():
         Inventory.append("CrowBar")
         print(Inventory)
         print("You picked up a CowBar")
+        Option4_1()
     elif nextChoice2 == "n" or nextChoice2 == "N":
         print("You left the CrowBar")
+
+
+
+def Option4():
+    print()
+    print()
+    print("From the cockpit you see all controls on the right of you can see the ship statistics")
+    print(ShipStats)
+    print()
+    print()
+    print("From the window you also finally see you situation... ")
+    print("It seems that you're surrounded by a bunch of enemy ships")
+    print("")
+
+
+
+
+def Option4_1():
+    print()
+    print()
+    print()
+    print("You come across the doorway ")
+    print("In a rush you place the crowbar in a seem between the door")
+    print()
+    fithChoice = input("Press X To push the crow bar:  ")
+    if fithChoice == "X" or fithChoice ==  "x":
+        Ship_Interior["Ship_Door"] -= 1
+        print(Ship_Interior["Ship_Door"])
+        fithChoice1 = input("Press E To push crowbar:  ")
+        if fithChoice1 == "E" or fithChoice1 == "e":
+            Ship_Interior["Ship_Door"] -= 1
+            print(Ship_Interior["Ship_Door"])
+            if Ship_Interior["Ship_Door"] <= 0:
+                print("Door Opened")
+    else:
+        print("Please Enter Valid Input")
+        Option4_1()
+
+
+
+def startGame():
+    print()
+    enterGame = input("Would you like to start the game? (Y/N):  ")
+    if enterGame == "n" or enterGame == "N":
+        print()
+        print("This must be a dream... Let me sleep so i can wake up...\n\nYou go back to sleep...  ")
+        game_over()
+    elif enterGame == "y" or enterGame == "Y":
+        intro()
+    else:
+        print("Not a Valid Input")
+        print()
+        print()
+        startGame()
 
 
 
@@ -178,7 +291,7 @@ print()
 print()
 print("      ###########################")
 print("      #                         #")
-print("      #       Space Man         #")
+print("      #       Space isekai      #")
 print("      #                         #")
 print("      ###########################")
 print()
@@ -188,9 +301,8 @@ print("Whaa... What Happend? Where am I")
 print("Its too dark... Buts whats that green light beeping form the distance?\n\n"
       "Maybe i should press it?")
 print()
-startGame = input("Would you like to start the game? (Y/N):  ")
-if startGame == "n" or startGame == "N":
-    print()
-    print("This must be a dream... Let me sleep so i can wake up...\n\nYou go back to sleep... Maybe Next Time ")
-elif  startGame == "y" or startGame == "Y":
-    intro()
+startGame()
+
+
+if PlayerStats["Health"] <= 0:
+    game_over()
