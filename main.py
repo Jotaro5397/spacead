@@ -44,6 +44,9 @@ EnemyShip1 = Enemyship("Mowader", "Red cross", 60, 50, 75,40,5)
 
 
 
+
+
+
 # from random import randint
 #
 # EnemyShip = {"name": "Mowader", "Ship_Shields": 60, "Ship_Integrity": 50, Ship_Weapons: 75}
@@ -421,16 +424,48 @@ def ShipIntroduction():
             battle()
 
 
-
+# Basic boss fight
 def battle():
     print()
     print()
     print("First ill scan the the ship")
     time.sleep(a)
     print(EnemyShip1.__dict__)
-    Attack1 = input("Do want to attack the vessel")
-    if Attack1 == "X" or Attack1 "x"
+    Attack1 = input("Do want to attack the vessel.. Press X:   ")
+    if Attack1 == "X" or Attack1 == "x":
+        EnemyShip1.Ship_Shields -= 15
+        print(EnemyShip1.__dict__)
 
+        if Attack1 == "X" or Attack1 == "x":
+            EnemyShip1.Ship_Shields -= 15
+            print(EnemyShip1.__dict__)
+
+            if Attack1 == "X" or Attack1 == "x":
+                EnemyShip1.Ship_Shields -= 15
+                print(EnemyShip1.__dict__)
+
+                if Attack1 == "X" or Attack1 == "x":
+                    EnemyShip1.Ship_Shields -= 15
+                    print(EnemyShip1.__dict__)
+
+                    if Attack1 == "X" or Attack1 == "x":
+                        EnemyShip1.Ship_Shields -= 15
+                        print(EnemyShip1.__dict__)
+
+    else:
+        print("You been attack")
+        time.sleep(b)
+        MyShip["Ship_Shields"] -=10
+def final():
+    time.sleep(b)
+    print()
+    print("Well done...")
+    time.sleep(b)
+    print("You have successfully defeated the enemy ")
+    time.sleep(b)
+    print("This the end of the game...")
+    time.sleep(b)
+    print("I thank you for playing")
 
 
 def startGame():
@@ -460,7 +495,8 @@ print("""
 ╚════██║██╔═══╝ ██╔══██║██║     ██╔══╝      ██║╚════██║██╔══╝  ██╔═██╗ ██╔══██║██║
 ███████║██║     ██║  ██║╚██████╗███████╗    ██║███████║███████╗██║  ██╗██║  ██║██║
 ╚══════╝╚═╝     ╚═╝  ╚═╝ ╚═════╝╚══════╝    ╚═╝╚══════╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝
-                                                                                  
+                                         By                                       
+                                    Jojo   Antoko                      
 """)
 time.sleep(a)
 # choice  to start game
@@ -478,3 +514,12 @@ if PlayerStats["Health"] <= 0:
 
 if MyShip["Ship_Integrity"] <= 0:
     game_over()
+
+if EnemyShip1.Ship_Integrity <= 0:
+    final()
+
+if MyShip["Ship_Shields"] <=0:
+    game_over()
+
+if EnemyShip1.Ship_Shields <=0:
+    final()
