@@ -8,7 +8,8 @@ PlayerStats = {"Health": 10,"Shield": 0, "Name": None}
 
 
 #Ship information stored in dictionary
-ShipStats = {"Ship_Shields": 100, "Ship_Integrity": 100, "Ship_Power": 100, "Ship_Weapons": 100, "Ship_Name": None}
+#SHIP shileds how much damage it can take, Integrity is it health
+MyShip = {"Ship_Shields": 100, "Ship_Integrity": 100, "Ship_Power": 100, "Ship_Weapons": 100, "Ship_Name": None, "DMG": 10}
 
 #Inventory
 Inventory = []
@@ -16,17 +17,28 @@ Inventory = []
 
 Ship_Interior = {"Ship_Door": 2}
 
+
+
 class Enemyship:
     kind = "SpaceShip"
 
 
-    def __init__(self, name, Affiliation,Ship_Integrity,Ship_Shield,Ship_Power,Ship_Weapons,):
-        self.name = name
+    def __init__(self, Name,Affiliation,Ship_Integrity,Ship_Shield,Ship_Power,Ship_Weapons,Ship_DMG):
+        self.Name = Name
         self.Affiliation = Affiliation
         self.Ship_Integrity = Ship_Integrity
         self.Ship_Shields = Ship_Shield
         self.Ship_Power = Ship_Power
         self.Ship_Weapons = Ship_Weapons
+        self.Ship_DMG = Ship_DMG
+
+
+    def attack(self):
+        print("Enemy is attacking")
+
+
+
+EnemyShip1 = Enemyship("Mowader", "Red cross", 60, 50, 75,40,5)
 
 
 
@@ -222,9 +234,9 @@ def Option2_2():
     PlayerStats["Health"] -= 3
     print(PlayerStats)
     time.sleep(a)
-    ShipStats["Ship_Shields"] -= 20
-    ShipStats["Ship_Integrity"] -= 20
-    print(ShipStats)
+    MyShip["Ship_Shields"] -= 20
+    MyShip["Ship_Integrity"] -= 20
+    print(MyShip)
     print()
     print()
     time.sleep(a)
@@ -263,8 +275,8 @@ def Option3():
     print("All of the sudden you hear a bang and feel a big rumble... ")
     print()
     time.sleep(a)
-    ShipStats["Ship_Shields"] -= 10
-    print(ShipStats)
+    MyShip["Ship_Shields"] -= 10
+    print(MyShip)
     print()
     time.sleep(a)
     print("You were hit....")
@@ -318,7 +330,7 @@ def Option4():
     print()
     time.sleep(a)
     print("From the cockpit you see all controls on the right of you can see the ship statistics")
-    print(ShipStats)
+    print(MyShip)
     time.sleep(a)
     print()
     print()
@@ -377,6 +389,7 @@ def Option5():
         print("Enter valid input")
         Option5()
 
+#Ship introductionary phase
 def ShipIntroduction():
     print()
     time.sleep(a)
@@ -393,12 +406,12 @@ def ShipIntroduction():
         print()
         ShipName = input("Please give me a name...")
         if input:
-            ShipStats["Ship_Name"] = ShipName
+            MyShip["Ship_Name"] = ShipName
             confirm_choice()
             print()
             time.sleep(a)
             print()
-            print("Thank you i really like the name ", ShipStats["Ship_Name"])
+            print("Thank you i really like the name ", MyShip["Ship_Name"])
             time.sleep(a)
             print()
             print("We seem to have an enemy trying take advantage of the ship while i was offline" )
@@ -411,7 +424,12 @@ def ShipIntroduction():
 
 def battle():
     print()
-
+    print()
+    print("First ill scan the the ship")
+    time.sleep(a)
+    print(EnemyShip1.__dict__)
+    Attack1 = input("Do want to attack the vessel")
+    if Attack1 == "X" or Attack1 "x"
 
 
 
@@ -458,5 +476,5 @@ startGame()
 if PlayerStats["Health"] <= 0:
     game_over()
 
-if ShipStats["Ship_Integrity"] <= 0:
+if MyShip["Ship_Integrity"] <= 0:
     game_over()
