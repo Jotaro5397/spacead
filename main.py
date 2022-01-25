@@ -17,7 +17,20 @@ Inventory = []
 
 Ship_Interior = {"Ship_Door": 2}
 
+class myCraft:
+    kind = "SpaceShip"
 
+    def __init__(self,Ship_Shields,Ship_Integrity,Ship_Power,Ship_Weapons,Ship_Name,Ship_DMG):
+        self.Ship_Shields = Ship_Shields
+        self.Ship_Integrity = Ship_Integrity
+        self.Ship_Power = Ship_Power
+        self.Ship_Weapons = Ship_Weapons
+        self.Ship_Name = Ship_Name
+        self.Ship_DMG = Ship_DMG
+
+
+
+myCraft1 = myCraft(100,100,100,100,None,10)
 
 class Enemyship:
     kind = "SpaceShip"
@@ -41,6 +54,7 @@ class Enemyship:
 EnemyShip1 = Enemyship("Mowader", "Red cross", 60, 50, 75,40,5)
 
 
+print(myCraft1.__dict__)
 
 
 
@@ -237,9 +251,12 @@ def Option2_2():
     PlayerStats["Health"] -= 3
     print(PlayerStats)
     time.sleep(a)
-    MyShip["Ship_Shields"] -= 20
-    MyShip["Ship_Integrity"] -= 20
-    print(MyShip)
+    myCraft1.Ship_Shields -= 20
+    myCraft1.Ship_Integrity -= 20
+    print(myCraft1.__dict__)
+    # MyShip["Ship_Shields"] -= 20
+    # MyShip["Ship_Integrity"] -= 20
+    # print(MyShip)
     print()
     print()
     time.sleep(a)
@@ -278,11 +295,13 @@ def Option3():
     print("All of the sudden you hear a bang and feel a big rumble... ")
     print()
     time.sleep(a)
-    MyShip["Ship_Shields"] -= 10
-    print(MyShip)
+    myCraft1.Ship_Shields -= 10
+    # MyShip["Ship_Shields"] -= 10
+    # print(MyShip)
     print()
     time.sleep(a)
     print("You were hit....")
+    print(myCraft1.__dict__)
     time.sleep(a)
     print("As the power on you can see through the window a large explosion in front of yellowish vail ")
     time.sleep(a)
@@ -333,7 +352,8 @@ def Option4():
     print()
     time.sleep(a)
     print("From the cockpit you see all controls on the right of you can see the ship statistics")
-    print(MyShip)
+    print(myCraft1.__dict__)
+    # print(MyShip)
     time.sleep(a)
     print()
     print()
@@ -409,12 +429,12 @@ def ShipIntroduction():
         print()
         ShipName = input("Please give me a name...")
         if input:
-            MyShip["Ship_Name"] = ShipName
+            myCraft1.Ship_Name = ShipName
             confirm_choice()
             print()
             time.sleep(a)
             print()
-            print("Thank you i really like the name ", MyShip["Ship_Name"])
+            print("Thank you i really like the name ", myCraft1.Ship_Name)
             time.sleep(a)
             print()
             print("We seem to have an enemy trying take advantage of the ship while i was offline" )
