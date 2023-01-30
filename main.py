@@ -58,13 +58,6 @@ print(myCraft1.__dict__)
 
 
 
-# from random import randint
-#
-# EnemyShip = {"name": "Mowader", "Ship_Shields": 60, "Ship_Integrity": 50, Ship_Weapons: 75}
-
-
-
-
 # commands(player, Goblin)
 
 def confirm_choice():
