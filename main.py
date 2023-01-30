@@ -58,9 +58,6 @@ print(myCraft1.__dict__)
 
 
 
-
-
-
 # from random import randint
 #
 # EnemyShip = {"name": "Mowader", "Ship_Shields": 60, "Ship_Integrity": 50, Ship_Weapons: 75}
@@ -180,8 +177,6 @@ def intro():
         intro()
 
 
-
-
 def Option2():
     print("You proceed to keep walking through the hallway of the ship. ")
     time.sleep(a)
@@ -209,8 +204,6 @@ def Option2():
         print("You do not have a keyCard")
         print("Go back and find the KeyCard")
         Option2_2()
-
-
 
 
 def Option2_1():
